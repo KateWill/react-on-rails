@@ -22,7 +22,7 @@ class Api::ItemsController < ApplicationController
     if @item.save
       render json: @item
     else
-      render json: { errors: @item.errors }, status: :unprocessable_entity
+      render json: { errors: @item.errors, status: :unprocessable_entity}
     end
   end
 
@@ -60,7 +60,7 @@ private
 # end
 
 def item_params
-  params.require(item).permit(:name, :complete)
+  params.require(:item).permit(:name, :complete)
 end
 
 end
